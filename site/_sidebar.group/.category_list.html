@@ -1,0 +1,8 @@
+<p><a href="{path='{embed:channel}'}">View all</a></p>
+{exp:channel:categories style="nested" channel="{embed:channel}" class="category-list"}
+	{if embed:channel}
+	<a href="{path='{embed:channel}'}"{if segment_3 == category_url_title} class="active"{/if}>{category_name}</a>
+	{if:else}
+	<a href="{path='home'}"{if segment_3 == category_url_title} class="active"{/if}>{category_name}</a>
+	{/if}
+{/exp:channel:categories}

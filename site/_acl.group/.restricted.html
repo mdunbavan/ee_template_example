@@ -1,0 +1,38 @@
+{exp:switchee variable = "{logged_in}" parse="inward"}
+	{case value="1"}
+		{embed="_layouts/.page_constructor"
+			target="{embed:target}"
+			body_class="{embed:body_class}"
+			page_layout="{embed:page_layout}"
+			sidebar="{embed:sidebar}"
+			page_title="{embed:page_title}"
+			active_location="{embed:active_location}"
+			channel="{embed:channel}"
+			group_id="{embed:group_id}"
+			category="{embed:category}"
+			limit="{embed:limit}"
+			sidebar_span="{embed:sidebar_span}"
+			main_span="{embed:main_span}"
+		}
+	{/case}
+	{case default="Yes"}
+		{embed="_layouts/.page_constructor"
+			target="{embed:target}"
+			body_class="{embed:body_class}"
+			page_layout="{embed:page_layout}"
+			sidebar="{embed:sidebar}"
+			page_title="{embed:page_title}"
+			active_location="{embed:active_location}"
+			channel="{embed:channel}"
+			group_id="{embed:group_id}"
+			category="{embed:category}"
+			limit="{embed:limit}"
+			sidebar_span="{embed:sidebar_span}"
+			main_span="{embed:main_span}"
+			}
+	{/case}
+{/exp:switchee}
+{!-- if:else}
+	{!-- redirect="login/{exp:ssc_uri:get_uri}" --}
+	{redirect="login"}
+{/if --}

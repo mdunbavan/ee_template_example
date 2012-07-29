@@ -1,0 +1,120 @@
+{exp:channel:entries channel="svg-images" limit="1" entry_id="{segment_4}"}
+<div class="row">
+	<div class="span9">
+
+		{if logged_in}
+		<div class="alert alert-info fade in">
+			<!-- a class="close" data-dismiss="alert" href="#">&times;</a -->
+			This svg download is not in your library. <a href="{store_link}">Click here to get it from the Above Rubies Studio online store...</a>
+		</div>
+		{if:else}
+		<div class="alert alert-info">
+			Get a Library account and add this svg download to in your library from the <a href="{store_link}">Above Rubies Studio online store...</a>
+		</div>
+		{/if}
+
+		{exp:channel_images:images entry_id="{entry_id}" limit="1"}
+
+			<div class="thumbnail" style="margin-bottom: 20px;">
+				{exp:ce_img:pair src="{image:url}" max_width="860" crop="yes" auto_cache="yes" rounded_corners="all,4"}
+					<img src="{made}" alt="{title}" />
+				{/exp:ce_img:pair}
+			</div>
+
+		{/exp:channel_images:images}
+	
+		<div class="well">
+	    	<h2>{title}</h2>
+	    	{main_body}
+	    </div>
+
+		<ul class="thumbnails">
+		{exp:channel_images:images entry_id="{entry_id}"}
+
+			<li class="span1">
+				<a href="{image:url:large}" class="thumbnail gallery" title="{image:title} - {image:description}">
+					<img src="{image:url:small}" alt="{image:description}">
+				</a>
+			</li>
+		{/exp:channel_images:images}
+		</ul>
+
+		{videos row_id="{segment_5}"}
+			
+			{video_player width="860" height="484"}
+			
+				{exp:switchee variable="{video_access}" parse="inward"}
+					{case value="public"}
+					<div class="thumbnail video-wrap">
+						<div id="fitvids">
+							{embed}
+						</div>
+					</div>
+					{/case}
+					{case value="restricted" default="Yes"}
+						<div class="alert alert-error" style="height: 150px; text-align: center; padding-top: 75px;">
+							<p><b>This workshop is not in your library.</b></p>
+							<p>Add this workshop to your library today! Get it in the <a href="{store_link}">Above Rubies Studio Online Store</a>!
+						</div>
+					{/case}
+				{/exp:switchee}
+
+		 	   	{!-- <div class="video-controls">
+				    <ul class="pager">
+						{if prev_row}{prev_row}<li class="previous"><a href="{path=video-class}/view/{url_title}/{entry_id}/{if field_row_index}{row_id}{/if}">&larr; Previous Lesson</a></li>{/prev_row}{/if}
+						{if next_row}{next_row}<li class="next"><a href="{path=video-class}/view/{url_title}/{entry_id}/{row_id}">Next Lesson &rarr;</a></li>{/next_row}{/if}
+					</ul>
+				</div> --}
+
+			{/video_player}
+
+		{/videos}
+
+        {!-- show downloads if they exist --}
+        {exp:channel_files:files entry_id="{entry_id}"}
+        {if file:count == 1}
+	        <h2>Downloads</h2>
+	        {if logged_in}
+			<div class="alert alert-info fade in">
+				<!-- a class="close" data-dismiss="alert" href="#">&times;</a -->
+				To add this workshop to your library and access all of the downloads, <a href="{store_link}">click here to get it from the Above Rubies Studio online store...</a>
+			</div>
+			{if:else}
+			<div class="alert alert-info">
+				To add this workshop to your library and access all of the downloads, <a href="{store_link}">click here to get it from the Above Rubies Studio online store...</a>
+			</div>
+			{/if}
+	         <table class="table">
+	        	<tr>
+	        		<th>Title</th>
+	        		<th>Description</th>
+	        		<th>Type (size)</th>
+	        		<th> </th>
+	        	</tr>
+	    {/if}
+        		<tr>
+        			<td>
+	        			{if file:category == 'Public'}
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}">{file:title}</a>
+	        			{if:else}
+	        			{file:title}
+	        			{/if}
+	        		</td>
+	        		<td>{file:description}</td>
+	        		<td>{file:extension} ({file:filesize})</td>
+	        		<td>
+	        			{if file:category == 'Public'}
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}" class="btn btn-mini">Free Download</a>
+	        			{if:else}
+	        			<a href="#" title="This must be in your library before you can download" class="btn btn-mini disabled">Download</a>
+	        			{/if}
+	        		</td>
+        		</tr>
+	    {if file:count == file:total}
+	    	</table>
+	    {/if}
+        {/exp:channel_files:files}
+
+	</div>
+</div>
+{/exp:channel:entries}

@@ -1,0 +1,19 @@
+{!-- 
+	To use thed parsed dencrypted string using the ssc_encrypt plugin,
+	the PostMast plugin must be embeded (.sender) with the decrypted values
+	passed as embed variables.
+--}
+{exp:ssc_encrypt:decrypt encrypted="{segment_3}" decrypt_key="{global:decrypt_key}"}
+	{embed="email/.sender"
+		subject="My ARS Library Details for order # {order_id}"
+		template="{segment_2}"
+		email="{email}"
+		fname="{fname}"
+		lname="{lname}"
+		order_id="{order_id}"
+		sku="{sku}"
+		product_id="{product_id}"
+		myars_access_code="{myars_access_code}"
+
+	}
+{/exp:ssc_encrypt:decrypt}

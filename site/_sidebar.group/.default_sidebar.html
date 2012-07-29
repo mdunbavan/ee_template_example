@@ -1,0 +1,28 @@
+<div class="sidbar-nav-simple">
+
+	<div class="sidebar-item">
+		<h3>Categories</h3>
+		{embed="_sidebar/.category_list"
+			channel=""
+		}
+	</div>
+
+	{if logged_in}
+	<div class="sidebar-item">
+		{embed="_sidebar/.my_library"}
+	</div>
+	{/if}
+
+	{embed="_sidebar/.enter_code"}
+
+	<?php $linkPin = "{title_permalink='template/template_view/'}";
+           $imagePin = "{image}";
+           $descrPin = "Site Name {title}";           
+	?>
+{!-- 
+<a href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode($linkPin); ?>&media;=<?php echo urlencode($imagePin); ?>&description;=<?php echo urlencode($descrPin); ?>" class="pin-it-button" count-layout="vertical">Pin It</a>
+
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script> 
+
+--}
+</div>

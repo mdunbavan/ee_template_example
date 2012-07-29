@@ -1,0 +1,38 @@
+{if segment_2 == 'success'}
+	<div class="span12">
+	<div class="alert alert-success">
+		Your account has been created! Please login using your email address and the password you created.
+	</div>
+	</div>
+{/if}
+<div class="span4 offset4">
+	{exp:member:login_form return="{exp:ssc_login:redirect default='library' offset='2'}"}
+		<fieldset>
+			<legend>Sign into your account</legend>
+			
+			<div class="control-group">
+				<label class="control-label" for="username">Email Address</label>
+				<div class="controls">
+					<input type="text" name="username" id="username" />
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="password">Password</label>
+				<div class="controls">
+					<input type="password" name="password" id="password" />
+				</div>
+			</div>
+
+			<div class="form-actions">
+				{if auto_login}
+					<label class="checkbox"><input type="checkbox" name="auto_login" value="1"> Keep me signed in</label>
+				{/if}
+				<input type="submit" class="btn btn-primary" name="submit" value="Sign in" />
+			</div>
+			
+			<p><a href="{path=login/forgot}">Forgot your password?</a> | <a href="{path=about/no-signup}">Why isn't there a sign up link?</a></p>
+		</fieldset>
+	{/exp:member:login_form}
+
+</div>

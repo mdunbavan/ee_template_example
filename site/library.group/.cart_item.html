@@ -1,0 +1,12 @@
+{exp:ssc_get_expstore:first_order_id member_id='{member_id}' entry_id='{embed:entry_id}'}
+	{if order_id}
+		<p class="alert alert-success">Nice! This item is already in <a href="{path=library}">your library</a>.</p>
+	{if:else}
+		{exp:store:product empty_cart="yes" entry_id="{embed:entry_id}" return="library/checkout" input:access_code="access_code"}
+			<input type="hidden" name="access_code" value="{embed:users_access_code}" />
+			<a href="{path=SITE_INDEX}" class="btn">Cancel</a> 
+			<span class="or-seperator">or</span>
+			<input type="submit" name="submit" class="btn btn-primary" value="Continue..." />
+		{/exp:store:product}
+	{/if}
+{/exp:ssc_get_expstore:first_order_id}

@@ -1,0 +1,24 @@
+<div class="sidebar-item">
+	<h3>Have a Class Number?</h3>
+	
+	{if logged_in}
+	<form method="post" action="{path=library/add-to-cart}" class="form-inline">
+
+		<p>If you already have a code, enter it below to add items to your library.</p>
+		<div class="control-group">
+			{exp:super_search:search}
+			<input type="text" class="input-small" name="access_code-exact" value="" placeholder="Enter Code" />
+			<button type="submit" class="btn">Lookup Code</button>
+			{/exp:super_search:search}
+		</div>
+		<p><a href="{global:ars_store_url}">Shop for classes, workshops and more in the Above Rubies Studio store &rarr;</a></p>
+
+	</form>
+
+	{if:else}
+
+	<p><a href="{path=login/library/add-to-cart}">Login to your account</a> to add content to your library.</p> 
+	<p><strong>Don't have an account?</strong> After a purchase is completed in the <a href="http://shop.aboverubiesstudio.com">Above Rubies Studio store</a>, your account information will be emailed to you.
+
+	{/if}
+</div>

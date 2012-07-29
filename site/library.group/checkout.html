@@ -1,0 +1,15 @@
+{if logged_in}
+	{embed="_layouts/.page_constructor"
+		target="{segment_1}/.{segment_2}"
+		page_title="Add to Library"
+		page_layout="_layouts/.default"
+		sidebar=""
+		main_span="12" 
+		sidebar_span=""
+		body_class="default"
+		channel=""
+		limit=""
+	}
+{if:else}
+	{redirect="login/{exp:ssc_login:get_uri}"}
+{/if}

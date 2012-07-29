@@ -1,0 +1,9 @@
+<div class="enter-code">
+	<form class="form-inline well" method="post" action="{path=library/add-to-cart}" style="text-align: center">
+	<p>Enter an access code to add videos, <br>workshops and other content to your library.</p>
+	{exp:super_search:search}
+		<input type="text" class="input-medium" name="access_code-exact" value="" placeholder="Enter Code" />
+		<button type="submit" class="btn">Lookup Code</button>
+	{/exp:super_search:search}
+	</form>
+</div>

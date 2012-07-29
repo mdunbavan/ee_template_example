@@ -1,0 +1,44 @@
+{if segment_2 == 'success'}
+	<div class="alert alert-success">Success! Content has been added to your library!</div>
+{/if}
+
+<ul class="thumbnails">
+{exp:store:orders member_id="CURRENT_USER"}
+	
+	{if no_orders}
+		<p style="text-align: center;">There isn't anything in your library yet.</p>
+	{/if}
+
+	{items}
+		{exp:channel:entries entry_id="{entry_id}"}
+			<li class="span3">
+				<div class="thumbnail" style="position: relative;">
+				<h3 class="title-overlay"><a href="{path="{channel_short_name}"}/view/{url_title}/{entry_id}" title="{title}">{title}</a></h3>
+				{if channel_short_name == 'video-class' || channel_short_name == 'live-class'}
+					{videos limit="1"}
+						{embed="library/.add-to-cart-thumb_video"
+							video_thumb="{video_thumb}"
+							title="{title}"
+						}
+					{/videos}
+				{if:else}
+					{embed="library/.add-to-cart-thumb_image"
+						entry_id="{entry_id}"
+					}
+				{/if}
+
+					{!-- videos limit="1"}
+						<a href="{path="{channel_short_name}"}/view/{url_title}/{entry_id}" title="{title}">
+							{exp:ce_img:pair src="{video_thumb}" max_width="260" max_height="146" crop="yes" auto_cache="yes" rounded_corners="all,4"}
+								<img src="{made}" alt="{title}" />
+							{/exp:ce_img:pair}
+						</a>
+					{/videos --}
+				</div>
+			</li>
+	  {/exp:channel:entries}
+	{/items}
+{/exp:store:orders}
+</ul>
+
+{embed="_common/.code_search_bar"}

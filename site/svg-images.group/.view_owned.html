@@ -1,0 +1,129 @@
+{exp:channel:entries channel="svg-images" limit="1" entry_id="{segment_4}"}
+<div class="row">
+	<div class="span9">
+
+		{exp:channel_images:images entry_id="{entry_id}" cover_only="yes"}
+
+			<div class="thumbnail" style="margin-bottom: 20px;">
+				{exp:ce_img:pair src="{image:url}" max_width="860" crop="yes" auto_cache="yes" rounded_corners="all,4"}
+					<img src="{made}" alt="{title}" />
+				{/exp:ce_img:pair}
+			</div>
+
+		{/exp:channel_images:images}
+	
+		<div class="well">
+	    	<h2>{title}</h2>
+	    	{main_body}
+	    </div>
+
+
+
+	{!-- <div class="span5">
+		<h2>Videos in this Workshop</h2>
+		<table class="table">
+			<tr>
+				<th>#</th>
+				<th>Title</th>
+				<th>Length</th>
+				<th></th>
+			</tr>
+			{videos}
+				{video_player}
+				<tr{if segment_5 == row_id || (segment_5 == '' && row_count == "1")} class="active"{/if}>
+					<td>{field_row_count}</td>
+					{exp:switchee variable="{video_access}" parse="inward"}
+						{case value="public"}
+							<td><a href="{path=video-class}/view/{url_title}/{entry_id}/{if field_row_index}{row_id}{/if}">{video_title}</a></td>
+							<td>{duration}</td>
+							<td>
+								<a href="{path=video-class}/view/{url_title}/{entry_id}/{if field_row_index}{row_id}{/if}" class="btn btn-primary btn-mini{if segment_5 == row_id || (segment_5 == '' && row_count == "1")} disabled{/if}">
+									<i class="icon-play-circle icon-white"> </i> 
+									Watch for free
+								</a>
+							</td>
+						{/case}
+						{case value="restricted" default="Yes"}
+							<td>{video_title}</td>
+							<td>{duration}</td>
+							<td></td>
+						{/case}
+					{/exp:switchee}
+				</tr>
+				{/video_player}
+			{/videos}
+		</table>
+	</div> --}
+
+		<ul class="thumbnails">
+		{exp:channel_images:images entry_id="{entry_id}"}
+
+			<li class="span1">
+				<a href="{image:url:large}" class="thumbnail gallery" title="{image:title} - {image:description}">
+					<img src="{image:url:small}" alt="{image:description}">
+				</a>
+			</li>
+		{/exp:channel_images:images}
+		</ul>
+
+		{videos row_id="{segment_5}"}
+			
+			{video_player width="860" height="484"}
+		
+				<div class="thumbnail video-wrap">
+					<div id="fitvids">
+						{embed}
+					</div>
+				</div>
+
+		 	   	{!-- <div class="video-controls">
+				    <ul class="pager">
+						{if prev_row}{prev_row}<li class="previous"><a href="{path=video-class}/view/{url_title}/{entry_id}/{if field_row_index}{row_id}{/if}">&larr; Previous Lesson</a></li>{/prev_row}{/if}
+						{if next_row}{next_row}<li class="next"><a href="{path=video-class}/view/{url_title}/{entry_id}/{row_id}">Next Lesson &rarr;</a></li>{/next_row}{/if}
+					</ul>
+				</div> --}
+
+			{/video_player}
+
+		{/videos}
+
+        {!-- show downloads if they exist --}
+        {exp:channel_files:files entry_id="{entry_id}"}
+        {if file:count == 1}
+	        <h2>Downloads</h2>
+	        {if logged_in}
+			<div class="alert alert-info fade in">
+				<!-- a class="close" data-dismiss="alert" href="#">&times;</a -->
+				To add this workshop to your library and access all of the downloads, <a href="{store_link}">click here to get it from the Above Rubies Studio online store...</a>
+			</div>
+			{if:else}
+			<div class="alert alert-info">
+				To add this workshop to your library and access all of the downloads, <a href="{store_link}">click here to get it from the Above Rubies Studio online store...</a>
+			</div>
+			{/if}
+	         <table class="table">
+	        	<tr>
+	        		<th>Title</th>
+	        		<th>Description</th>
+	        		<th>Type (size)</th>
+	        		<th> </th>
+	        	</tr>
+	    {/if}
+        		<tr>
+        			<td>
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}">{file:title}</a>
+	        		</td>
+	        		<td>{file:description}</td>
+	        		<td>{file:extension} ({file:filesize})</td>
+	        		<td>
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}" class="btn btn-mini">Download</a>
+	        		</td>
+        		</tr>
+	    {if file:count == file:total}
+	    	</table>
+	    {/if}
+        {/exp:channel_files:files}
+
+	</div>
+</div>
+{/exp:channel:entries}

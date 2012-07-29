@@ -1,0 +1,16 @@
+{embed="_layouts/.page_constructor"
+        target="{segment_1}/.index"
+        page_title="Sign in"
+        page_layout="_layouts/.default"
+        sidebar=""
+        main_span="12" 
+        sidebar_span=""
+        body_class="default"
+        channel=""
+        limit=""
+
+        {!-- override --}
+        {if segment_2 == 'forgot'}
+        target="{segment_1}/.forgot"
+        {/if}
+}

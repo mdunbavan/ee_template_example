@@ -1,0 +1,28 @@
+<ul class="thumbnails">
+{exp:channel:entries channel="{embed:channel}" paginate="bottom" {global:param_disable_some} limit="{limit}"}
+
+	{exp:channel_images:images entry_id="{entry_id}" cover_only="yes"}
+
+		<li class="span3" style="position: relative;">
+			
+				<h3 class="title-overlay"><a href="{path="{channel_short_name}"}/view/{url_title}/{entry_id}" title="{title}">{title}</a></h3>
+				<a class="thumbnail" href="{path="{channel_short_name}"}/view/{url_title}/{entry_id}" title="{title}">
+					{exp:ce_img:pair src="{image:url}" max_width="260" max_height="146" crop="yes" auto_cache="yes" rounded_corners="all,4"}
+						<img src="{made}" alt="{title}" />
+					{/exp:ce_img:pair}
+				</a>
+				<!-- div class="caption">
+					
+					<p>See the details...</p>
+					<p><a class="btn btn-primary" href="">Action</a> <a class="btn" href="#">Action</a></p>
+				</div -->
+			
+		</li>
+
+	{/exp:channel_images:images}
+
+	{if no_results}
+		<li>There isn't anything here yet.</li>
+	{/if}
+{/exp:channel:entries}
+</ul>

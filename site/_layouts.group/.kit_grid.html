@@ -1,0 +1,28 @@
+{exp:channel_images:images entry_id="{embed:entry_id}" cover_only="yes" limit="1"}
+	{exp:switchee variable = "{embed:count}" parse="inward"}
+		{case value="1"}
+			<div class="hero-unit" style="background: url(themes/site_themes/base/img/hero.jpg)">
+				<h1><a href="{path="{embed:channel_short_name}"}/view/{embed:url_title}/{embed:entry_id}" title="{embed:title}">{embed:title}</a></h1>
+				<p>{tagline}</p>
+				<p><a href="{path="{embed:channel_short_name}"}/view/{embed:url_title}/{embed:entry_id}" class="btn btn-primary btn-large pull-right">See more!</a></p>
+			</div>
+
+			<ul class="thumbnails">
+		{/case}
+		{case value="2" default="Yes"}
+			<li class="span3">
+				<div class="thumbnail" style="position: relative;">
+					<a href="{path="{embed:channel_short_name}"}/view/{embed:url_title}/{embed:entry_id}" title="{embed:title}" class="title-overlay"><h3>{embed:title}</h3></a>
+					<a href="{path="{embed:channel_short_name}"}/view/{embed:url_title}/{embed:entry_id}" title="{embed:title}">
+						<img src="http://placehold.it/420x220" alt="{embed:title}">
+					</a>
+					<!-- div class="caption">
+						
+						<p>See the details...</p>
+						<p><a class="btn btn-primary" href="">Action</a> <a class="btn" href="#">Action</a></p>
+					</div -->
+				</div>
+			</li>
+		{/case}
+	{/exp:switchee}
+{/exp:channel_images:images}

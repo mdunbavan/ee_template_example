@@ -1,0 +1,44 @@
+{exp:store:checkout return="library/success/ORDER_HASH" payment_method="manual"}
+
+	<div class="" style="text-align: center;">
+		<h2>The following will be added to your library:</h2>
+		{items}
+			{exp:channel:entries entry_id="{entry_id}"}
+				{modifiers}
+					{if modifier_value == access_code}
+						<div class="item-hold">
+							<h3>{title}</h3>
+							<div class="span3" style="margin: 0 auto; float: none;">
+								<div class="thumbnail">
+									{if channel_short_name == 'video-class' || channel_short_name == 'live-class'}
+										{videos limit="1"}
+											{embed="library/.add-to-cart-thumb_video"
+												video_thumb="{video_thumb}"
+												title="{title}"
+											}
+										{/videos}
+									{if:else}
+										{embed="library/.add-to-cart-thumb_image"
+											entry_id="{entry_id}"
+										}
+									{/if}
+								</div>
+							</div>
+						</div>
+
+						<div style="text-align: center;">
+							<a href="{path=SITE_INDEX}" class="btn">Cancel</a> 
+							<span class="or-seperator">or</span>
+							<input type="submit" class="btn btn-primary" name="submit" value="Add to Library" />
+							<p class="dim small" style="margin-top: 20px;">Step 2 of 2</p>
+						</div>
+					{if:else}
+						<p class="alert alert-warning">It appears you code is not valid.</p>
+					{/if}
+				{/modifiers}
+			{/exp:channel:entries}
+		{/items}
+
+	</div>
+
+{/exp:store:checkout}

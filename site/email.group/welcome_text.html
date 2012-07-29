@@ -1,0 +1,46 @@
+{exp:ssc_encrypt:decrypt encrypted="{segment_3}" decrypt_key="{global:decrypt_key}"}
+Hi, {fname}!
+
+A recent purchase you made from the Above Rubies Studio online
+store ( http://shop.aboverubiesstudio.com/ ) includes access to
+the "My Above Rubies Studio" Library, an easy way to watch,
+download and keep track of your digital purchases from Above
+Rubies Studio and Megan Elizabeth!
+
+If this is your first digital purchase from Above Rubies Studio,
+setting up an your My ARS account is quick and easy! There are
+just a few simple steps to create your account and add purchases
+to your My ARS Library.
+
+---------------------------
+Step 1: Create Your Account
+---------------------------
+
+A private, unique link has been created just for you. You will
+need to use this link to create your account.
+
+Your Private Link
+( {exp:ssc_bitly:shorten url='{path=signup}/{segment_3}'} )
+
+---------------------------
+Step 2: Add to Your Library
+---------------------------
+
+Use your code below to add content to your library once you've
+logged into your My ARS account.
+
+Your Private Code:
+{myars_access_code}
+
+If you have already created an account, you can click on the
+link below and sign in with your email address and password.
+
+Your Order Details
+------------------
+
+Order ID: {order_id}
+Sku: {sku}
+Price: {price}
+
+Thanks!
+{/exp:ssc_encrypt:decrypt}

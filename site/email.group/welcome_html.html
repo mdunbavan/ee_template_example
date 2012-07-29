@@ -1,0 +1,36 @@
+{exp:ssc_encrypt:decrypt encrypted="{segment_3}" decrypt_key="{global:decrypt_key}"}
+	
+	<h1 style="margin-bottom: 20px;">Hi, {fname}!</h1>
+	
+	<p>A recent purchase you made from the <a href="http://shop.aboverubiesstudio.com/" target="_blank">Above Rubies Studio online store</a> includes access to the "My Above Rubies Studio" Library, an easy way to watch, download and keep track of your digital purchases from Above Rubies Studio and Megan Elizabeth!</p>
+
+	<p>If this is your first digital purchase from Above Rubies Studio, setting up an your My ARS account is quick and easy! There are just a few simple steps to create your account and add purchases to your My ARS Library.</p>
+
+	<h2>Step 1: Create Your Account</h2>
+	<p>A private, unique link has been created just for you. You will need to use this link to create your account.</p>
+
+	<p style="padding: 10px; background: #efefef; text-align: center;">
+		<b>Your Private Link</b><br>
+		<a href="{exp:ssc_bitly:shorten url='{path=signup}/{segment_3}'}" target="_blank">{exp:ssc_bitly:shorten url='{path=signup}/{segment_3}'}</a>
+	</p>
+
+	<h2>Step 2: Add to Your Library</h2>
+	<p>Use your code below to add content to your library once you've logged into your My ARS account.</p>
+
+	<p style="padding: 10px; background: #efefef; text-align: center;">
+		<b>Your Private Code</b><br>
+		{myars_access_code}
+	</p>
+	
+	<p>If you have already created an account, you can click on the link below and sign in with your email address and password.</p>
+
+	<h3>Your Order Details</h3>
+	<p>
+		Order ID: {order_id} <br>
+		Sku: {sku} <br>
+		Price: {price} <br>
+	</p>
+
+	<p>Thanks!</p>
+	
+{/exp:ssc_encrypt:decrypt}

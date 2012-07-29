@@ -1,0 +1,18 @@
+{exp:ssc_encrypt:decrypt encrypted="{segment_2}" decrypt_key="{global:decrypt_key}"}
+	{embed="signup/.user_check"
+		email="{email}"
+	}
+	{if logged_out && register_key == '{global:register_key}'}
+		{embed="_layouts/.page_centered"
+			target="{segment_1}/.index"
+			page_title="Create an Account"
+			main_span="6"
+			main_offset="3"
+			body_class="default"
+		}
+	{if:elseif logged_in}
+		{redirect="library"}
+	{if:else}
+		{redirect="about/no-signup"}
+	{/if}
+{/exp:ssc_encrypt:decrypt}

@@ -1,0 +1,102 @@
+{exp:channel:entries channel="kits" limit="1" entry_id="{segment_4}"}
+<div class="row">
+	<div class="span9">
+
+		{exp:channel_images:images entry_id="{entry_id}" cover_only="yes"}
+
+			<div class="thumbnail" style="margin-bottom: 20px;">
+				{exp:ce_img:pair src="{image:url}" max_width="860" crop="yes" auto_cache="yes" rounded_corners="all,4"}
+					<img src="{made}" alt="{title}" />
+				{/exp:ce_img:pair}
+			</div>
+
+		{/exp:channel_images:images}
+	
+		<ul class="thumbnails">
+		{exp:channel_images:images entry_id="{entry_id}"}
+
+			<li class="span1">
+				<a href="{image:url:large}" class="thumbnail gallery" title="{image:title} - {image:description}">
+					<img src="{image:url:small}" alt="{image:description}">
+				</a>
+			</li>
+		{/exp:channel_images:images}
+		</ul>
+
+		<div class="well">
+	    	<h2>{title}</h2>
+	    	{main_body}
+	    </div>
+	
+		{videos row_id="{segment_5}"}
+		{if row_count == 1}
+		<h2>Videos</h2>
+		<ul class="thumbnails">
+		{/if}
+
+			{video_player width="260" height="146"}
+				<li class="span3">
+					<div class="thumbnail video-wrap">
+						<div>
+							{embed}
+						</div>
+					</div>
+				</li>
+		 	   	{!-- <div class="video-controls">
+				    <ul class="pager">
+						{if prev_row}{prev_row}<li class="previous"><a href="{path=video-class}/view/{url_title}/{entry_id}/{if field_row_index}{row_id}{/if}">&larr; Previous Lesson</a></li>{/prev_row}{/if}
+						{if next_row}{next_row}<li class="next"><a href="{path=video-class}/view/{url_title}/{entry_id}/{row_id}">Next Lesson &rarr;</a></li>{/next_row}{/if}
+					</ul>
+				</div> --}
+
+			{/video_player}
+		{if row_count == total_rows}
+		</ul>
+		{/if}
+		{/videos}
+
+		<h2>What's Included</h2>
+		<div class="row">
+			{contents}
+				<div class="span3 <?php if ({row_count} % 4 == 0) { ?> clear<?php } ?>">
+					{if item_type == 'custom'}
+					<h3>{item_type_custom}</h3>
+					{if:else}
+					<h3>{item_type}</h3>
+					{/if}
+					{item_list}
+				</div>
+			{/contents}
+		</div>
+
+
+        {!-- show downloads if they exist --}
+        {exp:channel_files:files entry_id="{entry_id}"}
+        {if file:count == 1}
+	        <h2>Downloads</h2>
+	         <table class="table">
+	        	<tr>
+	        		<th>Title</th>
+	        		<th>Description</th>
+	        		<th>Type (size)</th>
+	        		<th> </th>
+	        	</tr>
+	    {/if}
+        		<tr>
+        			<td>
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}">{file:title}</a>
+	        		</td>
+	        		<td>{file:description}</td>
+	        		<td>{file:extension} ({file:filesize})</td>
+	        		<td>
+	        			<a href="{file:locked_url}" title="Click to download the file: {file:title}" class="btn btn-mini">Download</a>
+	        		</td>
+        		</tr>
+	    {if file:count == file:total}
+	    	</table>
+	    {/if}
+        {/exp:channel_files:files}
+
+	</div>
+</div>
+{/exp:channel:entries}

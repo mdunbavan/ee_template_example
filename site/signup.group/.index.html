@@ -1,0 +1,64 @@
+<div style="margin-top: -50px;">
+		{exp:user:register form:class="form-horizontal" return="login" allow_registration="yes" admin_register="yes"}
+			{exp:ssc_encrypt:decrypt encrypted="{segment_2}" decrypt_key="{global:decrypt_key}"}
+			
+			<h1 style="margin-bottom: 20px;">Welcome, {fname}!</h1>
+			<p>You're about to create your "My Above Rubies Studio" Library account where you will be able to watch videos, live classes and download workshops you've purchased in the Above Rubies Studio online store. </p>
+
+			<p class="alert alert-warning" style="text-align: center;">To finish creating your account,  confirm the information below is correct and then create a password that you will use to sign into to your My ARS Library account.</p>
+
+			<fieldset>
+				{!-- <legend>Create Your Account</legend> --}
+				
+				<div class="control-group">
+					<label class="control-label" for="username">Email Address</label>
+					<div class="controls">
+						<input type="text" name="username" id="username" value="{email}" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="firstname">First Name</label>
+					<div class="controls">
+						<input type="text" name="firstname" id="firstname" value="{fname}" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="firstname">Last Name</label>
+					<div class="controls">
+						<input type="text" name="lastname" id="lastname" value="{lname}" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="password">Create a Password</label>
+					<div class="controls">
+						<input type="password" name="password" id="password" />
+						<p class="help-block">You will use this password to sign into your "My Above Rubies Studio" library. <em>This password may be different than your ARS Store account.</em></p>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="password_confirm">Password (again)</label>
+					<div class="controls">
+						<input type="password" name="password_confirm" id="password_confirm" />
+					</div>
+				</div>
+
+				<input type="hidden" name="order_id" value="{order_id}">
+				<input type="hidden" name="sku" value="{sku}">
+				<input type="hidden" name="price" value="{price}">
+				<input type="hidden" name="product_id" value="{product_id}">
+
+				<div class="form-actions">
+					<input type="submit" class="btn btn-primary" name="submit" value="Create Account">
+				</div>
+
+			</fieldset>
+
+			<p>Already have an account? <a href="{path=login}">Sign in</a>.</p>
+				{if no_results}
+				<p>You're currently logged in, and must be logged out to view this form.</p>
+				{/if}
+
+			{/exp:ssc_encrypt:decrypt}  
+		{/exp:user:register}
+	</div>

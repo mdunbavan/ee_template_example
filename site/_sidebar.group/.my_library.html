@@ -1,0 +1,27 @@
+<h3>Your Library</h3>
+<ul>
+	{exp:store:orders member_id="CURRENT_USER" limit="10"}
+		{if no_orders}
+			<li>There are no items in your library. <a href="{path=library/add-to-cart}">Add a code</a></li>
+		{/if}
+		{items}
+			{exp:channel:entries entry_id="{entry_id}" dynamic="no"}
+			<li><a href="{path=SITE_INDEX}{channel_short_name}/view/{url_title}/{entry_id}">{title}</a> ({channel})</li>
+			{/exp:channel:entries}
+		{/items}
+	{/exp:store:orders}
+	<li class="seperator-top"><a href="{path=library}">View Your Library</a></li>
+	<li><a href="{path=library}">Add to Your Library</a></li>
+</ul>
+
+{if segment_2 == 'view'}
+{exp:ssc_get_expstore:first_order_id member_id='{member_id}' entry_id='{segment_4}'}
+    {if order_id}
+        <div class="alert alert-success">This video is in <a href="{path=library}">your library</a></div>
+    {if:else}
+        <div class="alert alert-error">This item is not in your library. <a href="{exp:single_field field='store_link' entry_id='{segment_4}'}" target="_blank">Get it in the Above Rubies Studio Online Store &rarr;</a></div>
+
+        {!-- {embed="_sidebar/.enter_code"} --}
+    {/if}
+{/exp:ssc_get_expstore:first_order_id}
+{/if}

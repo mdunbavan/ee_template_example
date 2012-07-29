@@ -1,0 +1,44 @@
+<div class="container">
+	<hr>
+	<footer>
+		<div style="text-align: center; margin-top: 40px;">
+			<p><img src="{global:theme_url}/img/me-logo.png" title="by Megan Elizabeth"></p>
+			<p style="font-size: 10px;">Copyright &copy; {current_time format="%Y"} Megan Elizabeth&trade;</p>
+		</div>
+	</footer>
+</div>  <!-- / container -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{global:theme_url}/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+<!-- script src="{global:theme_url}/js/protofluid.js"></script -->
+
+<!-- scripts concatenated and minified via ant build script-->
+<script src="{global:theme_url}/js/libs/bootstrap/bootstrap-transition.js"></script>
+<script src="{global:theme_url}/js/libs/bootstrap/bootstrap-collapse.js"></script>
+<script src="{global:theme_url}/js/libs/bootstrap/bootstrap-dropdown.js"></script>
+<script src="{global:theme_url}/js/libs/bootstrap/bootstrap-modal.js"></script>
+<script src="{global:theme_url}/js/libs/bootstrap/bootstrap-alert.js"></script>
+<script src="{global:theme_url}/js/libs/colorbox/jquery.colorbox-min.js"></script>
+<script src="{global:theme_url}/js/jquery.fitvids.js"></script>
+
+<script src="{global:theme_url}/js/script.js"></script>
+<!-- end scripts-->
+
+<script>
+	$(document).ready(function() {
+		$('a.gallery').colorbox({rel:'gallery'});
+		$('a.video').colorbox({iframe:true, innerWidth:425, innerHeight:344});
+		$('#fitvids').fitVids();
+	});
+</script>
+
+<script>
+	var _gaq=[['_setAccount','UA-{global:google_analytics_key}'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>

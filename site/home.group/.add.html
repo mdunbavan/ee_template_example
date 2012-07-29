@@ -1,0 +1,81 @@
+
+<h1>cart</h1>
+
+{exp:store:cart}
+
+    {if no_items}
+        Your cart is empty!
+    {/if}
+
+    Your cart: {order_qty} items - {order_total}
+
+    <hr>
+    {items}
+	  {exp:channel:entries entry_id="{entry_id}"}
+		{sku}, {title}
+		| entryid: {entry_id}
+		
+		{!-- was the acces code entered corrent? --}
+		{modifiers} {modifier_name}
+			{if modifier_value == access_code}
+				access granged:
+				embed checkout code
+			{if:elseif modifier_value && modifier_value != access_code}
+				* wrong code error?
+			{/if}
+		{/modifiers}
+	  {/exp:channel:entries}
+	{/items}
+
+{/exp:store:cart}
+
+<hr>
+
+
+<h1>current</h1>
+
+{exp:store:orders member_id="CURRENT_USER"}
+    <hr>
+    !!id: {order_id} |
+    
+    {items}
+	  {exp:channel:entries entry_id="{entry_id}"}
+	    {sku}, {title}, {access_code}, entryid ({entry_id})
+	    <br>
+	  {/exp:channel:entries}
+	{/items}
+{/exp:store:orders}
+
+{!-- 
+<h1>cart</h1>
+
+{exp:store:cart}
+
+    {if no_items}
+        Your cart is empty!
+    {/if}
+
+    Your cart: {order_qty} items - {order_total}
+
+{/exp:store:cart} --}
+{!-- 
+<h1>buy</h1>
+{exp:store:checkout return="order/ORDER_HASH" payment_method="manual"}
+
+	{items}
+	  {exp:channel:entries entry_id="{entry_id}"}
+		{sku}, {title}
+		| entryid: {entry_id}
+
+		<hr>
+		{modifiers}
+		{if modifier_name == 'access_code'}
+			{modifier_value} => {access_code}
+			<input type="submit" name="submit" value="Place Order" />
+		{/if}
+		{/modifiers}
+	  {/exp:channel:entries}
+	{/items}
+<hr>
+    
+{/exp:store:checkout} --}

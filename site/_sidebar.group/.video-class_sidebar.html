@@ -1,0 +1,18 @@
+<div class="sidbar-nav-simple">
+	
+ 	<div class="sidebar-item">
+		<h3>Video Class Categories</h3>
+		{embed="_sidebar/.category_list"
+			channel="video-class"
+		}
+	</div>
+
+	{if logged_in}
+	<div class="sidebar-item">
+		{embed="_sidebar/.my_library"}
+	</div>
+	{/if}
+
+	{embed="_sidebar/.enter_code"}
+
+</div>

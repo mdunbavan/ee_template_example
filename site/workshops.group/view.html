@@ -1,0 +1,17 @@
+{exp:ssc_get_expstore:first_order_id member_id='{member_id}' entry_id='{segment_4}'}
+	{embed="_layouts/.page_constructor"
+		target="{segment_1}/.view_public"
+		body_class="default"
+		page_layout="_layout/.default"
+		sidebar="_sidebar/.default_sidebar"
+		main_span="9" 
+		sidebar_span="3"
+		page_title="{exp:low_title:entry entry_id='{segment_4}'}"
+
+		{!-- override target if owned --}
+		{if order_id}
+			target="{segment_1}/.view_owned"	
+			order_id="{order_id}"
+		{/if}
+	}
+{/exp:ssc_get_expstore:first_order_id}

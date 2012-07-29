@@ -1,0 +1,25 @@
+<div class="span4 offset4">
+	{exp:user:forgot_password}
+		<fieldset>
+			<legend>Forgot Password</legend>
+			
+			<div class="control-group">
+			<p>If you've forgotten your password, just enter your email address you registered with and you will receive an email with instructions for resetting your Password.</p>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="username">Email Address</label>
+				<div class="controls">
+					<input type="text" name="email" id="email" />
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<input type="submit" class="btn btn-primary" name="submit" value="Send Email" />
+			</div>
+			
+			<p><a href="{path=login}">Sign in</a></p>
+		</fieldset>
+	{/exp:user:forgot_password}
+
+</div>

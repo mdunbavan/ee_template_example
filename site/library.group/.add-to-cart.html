@@ -1,0 +1,39 @@
+{exp:super_search:results redirect_post="no" required="access_code"}
+
+	<div class="item-hold" style="text-align: center;">
+		<h2>You entered the code for:</h2>
+		<h3>{title}</h3>
+		<div class="span3" style="margin: 0 auto; float: none;">
+			<div class="thumbnail">
+				{if channel_short_name == 'video-class' || channel_short_name == 'live-class'}
+					{videos limit="1"}
+						{embed="library/.add-to-cart-thumb_video"
+							video_thumb="{video_thumb}"
+							title="{title}"
+						}
+					{/videos}
+				{if:else}
+					{embed="library/.add-to-cart-thumb_image"
+						entry_id="{entry_id}"
+					}
+				{/if}
+			</div>
+		</div>
+
+	</div>
+
+	<div style="text-align: center;">
+		{embed="library/.cart_item"
+			entry_id="{entry_id}"
+			users_access_code="{post:access_code-exact}"
+		}
+		<p class="dim small">Step 1 of 2</p>
+	</div>
+
+{if super_search_no_results}
+	<p class="alert alert-error">Please enter a code.</p>
+{/if}
+
+{/exp:super_search:results}
+
+{embed="_common/.code_search_bar"}
